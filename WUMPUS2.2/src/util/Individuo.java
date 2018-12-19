@@ -50,9 +50,9 @@ public final class Individuo {
                     movimentoX++;
 
                     if (verify(movimentoX, moviemntoY, iMax, xMax)) {
-                        aptidao++;
+                        aptidao = aptidao + 10;
                     } else {
-                        aptidao = aptidao - 1;
+                        aptidao = aptidao - 20;
                     }
 
                     break;
@@ -61,9 +61,9 @@ public final class Individuo {
                     movimentoX--;
 
                     if (verify(movimentoX, moviemntoY, iMax, xMax)) {
-                        aptidao++;
+                        aptidao = aptidao + 10;
                     } else {
-                        aptidao = aptidao - 1;
+                        aptidao = aptidao - 20;
                     }
                     break;
                 case 'L':
@@ -71,9 +71,9 @@ public final class Individuo {
                     moviemntoY++;
 
                     if (verify(movimentoX, moviemntoY, iMax, xMax)) {
-                        aptidao++;
+                        aptidao = aptidao + 10;
                     } else {
-                        aptidao = aptidao - 1;
+                        aptidao = aptidao - 20;
                     }
 
                     break;
@@ -82,9 +82,9 @@ public final class Individuo {
                     moviemntoY--;
 
                     if (verify(movimentoX, moviemntoY, iMax, xMax)) {
-                        aptidao++;
+                        aptidao = aptidao + 10;
                     } else {
-                        aptidao = aptidao - 1;
+                        aptidao = aptidao - 20;
                     }
 
                     break;
@@ -191,7 +191,22 @@ public final class Individuo {
                         }
 
                 }
+
+                //VERIFICAR SE O ULTLIMO MOVIMENTO FOI X =0 E Y =0
+                //caso tenha pegado o ouro
+                if (japegouOuro) {
+
+                    if (moviemntoY == 0 && movimentoX == 0) {
+                        aptidao = aptidao + 5000;
+                        processAmbiente = false;
+                    }
+
+                }
             }
+
+            //cada volta no laço desconto 10 pontos.
+            aptidao = aptidao - 10;
+
         }
     }
 

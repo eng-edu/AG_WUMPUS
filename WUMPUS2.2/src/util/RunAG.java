@@ -9,7 +9,7 @@ public class RunAG {
     // Ambiente ambiente = new Ambiente();
     int rangeNumGenes = 100;
     int tamPop = 3;
-    int tamGer = 100;
+    int tamGer = 1000;
 
     public void run() {
 
