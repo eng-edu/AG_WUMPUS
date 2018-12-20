@@ -12,7 +12,7 @@ public class WUMPUS22 {
      
         new RunAG().run();
         
-       System.out.println(util.Util.formataSaidaDaMatriz2(ambiente.getMatriz()));
+      //System.out.println(util.Util.formataSaidaDaMatriz2(ambiente.getMatriz()));
         
        // System.out.println(ambiente.getPercepcao(0, 4));
         

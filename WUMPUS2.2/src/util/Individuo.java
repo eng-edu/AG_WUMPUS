@@ -115,7 +115,7 @@ public final class Individuo {
                     break;
                 case 50:
 
-                    aptidao = aptidao - 100;
+                    aptidao = aptidao - 1000;
 
                     break;
 
