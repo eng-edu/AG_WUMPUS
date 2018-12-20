@@ -34,6 +34,7 @@ public final class Individuo {
 
         String estadoAtual = "A";
         boolean japegouOuro = false;
+        boolean jachegou = false;
 
         String estadoPercepcao = "";
 
@@ -67,18 +68,30 @@ public final class Individuo {
 
                 //nada
                 case 0:
-                    aptidao = aptidao + 10;
+                    if (japegouOuro) {
+                        aptidao = aptidao + 1;
+                    } else {
+                        aptidao = aptidao - 10;
+                    }
                     break;
 
                 //fedor    
                 case 2:
-                    aptidao = aptidao + 10;
+                    if (japegouOuro) {
+                        aptidao = aptidao + 1;
+                    } else {
+                        aptidao = aptidao - 10;
+                    }
 
                     break;
 
                 //brisa
                 case 4:
-                    aptidao = aptidao + 10;
+                    if (japegouOuro) {
+                       aptidao = aptidao + 1;
+                    } else {
+                        aptidao = aptidao - 10;
+                    }
 
                     break;
 
@@ -86,8 +99,10 @@ public final class Individuo {
                 case 6:
 
                     if (japegouOuro == false) {
-                        aptidao = aptidao + 1000;
+                        aptidao = aptidao + 10000;
                         japegouOuro = true;
+                    } else {
+                        aptidao = aptidao - 100;
                     }
 
                     break;
@@ -96,7 +111,7 @@ public final class Individuo {
                 case 3:
 
                     if (japegouOuro) {
-                        aptidao = aptidao - 100;
+                        aptidao = aptidao - 1000;
                     } else {
                         aptidao = aptidao - 100;
                     }
@@ -107,7 +122,7 @@ public final class Individuo {
                 case 1:
 
                     if (japegouOuro) {
-                        aptidao = aptidao - 100;
+                        aptidao = aptidao - 1000;
                     } else {
                         aptidao = aptidao - 100;
                     }
@@ -115,7 +130,11 @@ public final class Individuo {
                     break;
                 case 50:
 
-                    aptidao = aptidao - 1000;
+                    if (japegouOuro) {
+                        aptidao = aptidao - 1000;
+                    } else {
+                        aptidao = aptidao - 500;
+                    }
 
                     break;
 
@@ -125,15 +144,20 @@ public final class Individuo {
             //caso tenha pegado o ouro
             if (japegouOuro) {
                 if (moviemntoY == 0 && movimentoX == 0) {
-                    aptidao = aptidao + 5000;
-                } else {
-                    aptidao = aptidao - 100;
+                    
+                    if(jachegou){   
+                         aptidao = aptidao - 10000; 
+                    }else{
+                        aptidao = aptidao + 100000; 
+                       jachegou = true; 
+                    }
+                    
+                   
                 }
-
+                
+                
             }
 
-            //cada volta no laço desconto 10 pontos.
-            aptidao = aptidao - 10;
         }
 
     }

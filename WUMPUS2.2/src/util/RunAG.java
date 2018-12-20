@@ -10,7 +10,7 @@ public class RunAG {
     // Ambiente ambiente = new Ambiente();
     int rangeNumGenes = 100;
     int tamPop = 3;
-    int tamGer = 100;
+    int tamGer = 500;
 
     public void run() {
 
@@ -49,7 +49,7 @@ public class RunAG {
             System.out.println(populacao);
 
             if (e0.equals(e1) && e0.equals(e2) && e0.equals(e3)) {
-                System.out.println("\ntodos iguais\n ");
+                System.err.println("\ntodos iguais\n ");
             }
 
           
