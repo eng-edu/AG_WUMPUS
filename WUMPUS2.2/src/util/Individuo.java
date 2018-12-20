@@ -1,5 +1,6 @@
 package util;
 
+import com.sun.xml.internal.ws.encoding.soap.SOAP12Constants;
 import java.util.Random;
 import static util.RunAG.caracteres;
 import static wumpus2.pkg2.WUMPUS22.ambiente;
@@ -32,8 +33,9 @@ public final class Individuo {
     public void avaliarPerformance(int iMax, int xMax, String genes) {
 
         String estadoAtual = "A";
-        boolean processAmbiente = true;
         boolean japegouOuro = false;
+
+        String estadoPercepcao = "";
 
         int sizeGene = genes.length();
 
@@ -42,183 +44,98 @@ public final class Individuo {
 
         for (int i = 0; i < sizeGene; i++) {
 
-            char teste = genes.charAt(i);
+            char gene = genes.charAt(i);
 
-            switch (teste) {
+            switch (gene) {
                 case 'N':
-
                     movimentoX++;
-
-                    if (verify(movimentoX, moviemntoY, iMax, xMax)) {
-                        aptidao = aptidao + 10;
-                    } else {
-                        aptidao = aptidao - 20;
-                    }
-
                     break;
                 case 'S':
-
                     movimentoX--;
-
-                    if (verify(movimentoX, moviemntoY, iMax, xMax)) {
-                        aptidao = aptidao + 10;
-                    } else {
-                        aptidao = aptidao - 20;
-                    }
                     break;
                 case 'L':
-
-                    moviemntoY++;
-
-                    if (verify(movimentoX, moviemntoY, iMax, xMax)) {
-                        aptidao = aptidao + 10;
-                    } else {
-                        aptidao = aptidao - 20;
-                    }
-
+                    moviemntoY--;
                     break;
                 case 'O':
-
-                    moviemntoY--;
-
-                    if (verify(movimentoX, moviemntoY, iMax, xMax)) {
-                        aptidao = aptidao + 10;
-                    } else {
-                        aptidao = aptidao - 20;
-                    }
-
+                    moviemntoY++;
                     break;
             }
 
             int percepcao = ambiente.getPercepcao(movimentoX, moviemntoY);
 
-            if (processAmbiente) {
+            switch (percepcao) {
 
-                switch (percepcao) {
+                //nada
+                case 0:
+                    aptidao = aptidao + 10;
+                    break;
 
-                    //nada
-                    case 0:
+                //fedor    
+                case 2:
+                    aptidao = aptidao + 10;
 
-                        if (estadoAtual.equals("A")) {
-                            aptidao = aptidao + 10;
-                        } else if (estadoAtual.equals("B")) {
-                            aptidao = aptidao + 20;
-                        } else if (estadoAtual.equals("C")) {
-                            aptidao = aptidao + 20;
-                        } else if (estadoAtual.equals("F")) {
-                            aptidao = aptidao + 50;
-                        }
+                    break;
 
-                        estadoAtual = "A";
+                //brisa
+                case 4:
+                    aptidao = aptidao + 10;
 
-                        break;
+                    break;
 
-                    //fedor    
-                    case 2:
+                //ouro    
+                case 6:
 
-                        if (estadoAtual.equals("A")) {
-                            aptidao = aptidao + 10;
-                        } else if (estadoAtual.equals("B")) {
-                            aptidao = aptidao + 5;
-                        } else if (estadoAtual.equals("C")) {
-                            aptidao = aptidao + 5;
-                        } else if (estadoAtual.equals("F")) {
-                            aptidao = aptidao + 10;
-                        }
-
-                        estadoAtual = "B";
-
-                        break;
-
-                    //brisa
-                    case 4:
-
-                        if (estadoAtual.equals("A")) {
-                            aptidao = aptidao + 10;
-                        } else if (estadoAtual.equals("B")) {
-                            aptidao = aptidao + 5;
-                        } else if (estadoAtual.equals("C")) {
-                            aptidao = aptidao + 5;
-                        } else if (estadoAtual.equals("F")) {
-                            aptidao = aptidao + 10;
-                        }
-
-                        estadoAtual = "C";
-
-                        break;
-
-                    //ouro    
-                    case 6:
-
-                        if (!japegouOuro) {
-                            if (estadoAtual.equals("A")) {
-                                aptidao = aptidao + 1000;
-
-                            } else if (estadoAtual.equals("B")) {
-                                aptidao = aptidao + 1000;
-                            } else if (estadoAtual.equals("C")) {
-                                aptidao = aptidao + 1000;
-                            }
-                        }
-
+                    if (japegouOuro == false) {
+                        aptidao = aptidao + 1000;
                         japegouOuro = true;
-                        estadoAtual = "F";
-
-                        break;
-
-                    //foco    
-                    case 3:
-
-                        if (estadoAtual.equals("C")) {
-                            aptidao = aptidao - 2000;
-                        }
-
-                        estadoAtual = "D";
-                        processAmbiente = false;
-
-                        break;
-
-                    //wumpus
-                    case 1:
-
-                        if (estadoAtual.equals("B")) {
-                            aptidao = aptidao - 2000;
-
-                            estadoAtual = "E";
-                            processAmbiente = false;
-
-                            break;
-                        }
-
-                }
-
-                //VERIFICAR SE O ULTLIMO MOVIMENTO FOI X =0 E Y =0
-                //caso tenha pegado o ouro
-                if (japegouOuro) {
-
-                    if (moviemntoY == 0 && movimentoX == 0) {
-                        aptidao = aptidao + 5000;
-                        processAmbiente = false;
                     }
 
+                    break;
+
+                //foco    
+                case 3:
+
+                    if (japegouOuro) {
+                        aptidao = aptidao - 100;
+                    } else {
+                        aptidao = aptidao - 100;
+                    }
+
+                    break;
+
+                //wumpus
+                case 1:
+
+                    if (japegouOuro) {
+                        aptidao = aptidao - 100;
+                    } else {
+                        aptidao = aptidao - 100;
+                    }
+
+                    break;
+                case 50:
+
+                    aptidao = aptidao - 100;
+
+                    break;
+
+            }
+
+            //VERIFICAR SE O ULTLIMO MOVIMENTO FOI X =0 E Y =0
+            //caso tenha pegado o ouro
+            if (japegouOuro) {
+                if (moviemntoY == 0 && movimentoX == 0) {
+                    aptidao = aptidao + 5000;
+                } else {
+                    aptidao = aptidao - 100;
                 }
+
             }
 
             //cada volta no laço desconto 10 pontos.
             aptidao = aptidao - 10;
-
         }
-    }
 
-    public boolean verify(int movX, int movY, int iMax, int xMax) {
-        boolean result = false;
-
-        //verifica a posicao x e y da movimentacao n s l o incremeta  edecrementa cada movimento
-        //e tbm verifica se o movimento não é negativo
-        if (movX <= iMax && movX >= 0 && movY <= xMax && movY >= 0) {
-            result = true;
-        }
-        return result;
     }
 
     public String getGenes() {
@@ -235,7 +152,7 @@ public final class Individuo {
 
     @Override
     public String toString() {
-        return "Individuo{" + "genes=" + genes + ", sizeGenes=" + sizeGenes + ", aptidao=" + aptidao + '}';
+        return "Individuo{" + "genes=" + genes + ", sizeGenes=" + genes.length() + ", aptidao=" + aptidao + '}';
     }
 
 }

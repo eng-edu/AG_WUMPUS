@@ -11,10 +11,12 @@ public class Geracao {
     public Populacao populacao;
     public List<Individuo> individuosSelecionados;
     public List<Individuo> novosIndividuos;
-    public Individuo mutado;
+    public Individuo mutado1;
+     public Individuo mutado2;
     public int iMax;
     public int xMax;
-    public int selecionado;
+    public int selecionado1;
+     public int selecionado2;
 
     
     public Geracao(Populacao populacao,int rangeNumGenes, int iMax, int xMax) {
@@ -76,12 +78,19 @@ public class Geracao {
     }
 
     public void mutarIndividuo() {
-        this.selecionado = new Random().nextInt(this.individuosSelecionados.size());
-        this.mutado = Util.mutarIndividuo(this.novosIndividuos, this.iMax, this.xMax, this.selecionado);
+        this.selecionado1 = new Random().nextInt(this.individuosSelecionados.size());
+        this.mutado1 = Util.mutarIndividuo(this.novosIndividuos, this.iMax, this.xMax, this.selecionado1);
 
+        this.selecionado2 = new Random().nextInt(this.individuosSelecionados.size());
+        this.mutado2 = Util.mutarIndividuo(this.novosIndividuos, this.iMax, this.xMax, this.selecionado2);
+
+        
         //atualizar individuo mutado na populaçao
-        this.individuosSelecionados.remove(selecionado);
-        this.individuosSelecionados.add(mutado);
+        this.individuosSelecionados.remove(selecionado1);
+        this.individuosSelecionados.add(mutado1);
+         //atualizar individuo mutado na populaçao
+        this.individuosSelecionados.remove(selecionado2);
+        this.individuosSelecionados.add(mutado2);
         
    
         //adicono os novos individuos na população 

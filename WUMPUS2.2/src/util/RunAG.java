@@ -3,8 +3,8 @@ package util;
 public class RunAG {
 
     public static String caracteres = "NSLO";
-    public static int iMax = 10;
-    public static int xMax = 10;
+    public static int iMax = 5;
+    public static int xMax = 5;
     Populacao populacao = null;
     // Ambiente ambiente = new Ambiente();
     int rangeNumGenes = 100;
@@ -30,6 +30,12 @@ public class RunAG {
             System.out.println("\nGeracção: " + i + " " + populacao.toString());
 
         }
+        
+        String solucao = populacao.getIndividuos().get(0).getGenes();
+        
+        
+        
+        
     }
 
 }
