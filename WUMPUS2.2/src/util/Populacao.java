@@ -7,13 +7,13 @@ public class Populacao {
 
     private List<Individuo> individuos;
     private int tamPopulacao;
-    
+
     //cria uma população com indivíduos aleatória
     public Populacao(int rangeNumGenes, int tamPop, int iMax, int xMax) {
         this.tamPopulacao = tamPop;
         this.individuos = new ArrayList();
         for (int i = 0; i <= tamPop; i++) {
-            this.individuos.add(i,new Individuo(rangeNumGenes, iMax, xMax));      
+            this.individuos.add(i, new Individuo(rangeNumGenes, iMax, xMax));
         }
     }
 
@@ -24,21 +24,19 @@ public class Populacao {
     public void setIndividuos(List<Individuo> individuos) {
         this.individuos = individuos;
     }
-    
-   
-     public void addIndividuos(Individuo individuo) {
+
+    public void addIndividuos(Individuo individuo) {
         this.individuos.add(individuo);
         this.tamPopulacao = this.individuos.size();
-        
+
     }
-     
-     public void removeUtlimoIndividuo(int index) {
+
+    public void removeUtlimoIndividuo(int index) {
         this.individuos.remove(index);
         this.tamPopulacao = this.individuos.size();
-        
+
     }
-     
-     
+
 
     public int getTamPopulacao() {
         return tamPopulacao;
@@ -46,13 +44,7 @@ public class Populacao {
 
     @Override
     public String toString() {
-        return "\nPopulacao{" + "individuos=" + individuos + ", tamPopulacao=" + tamPopulacao +'}';
+        return "\nPopulacao{" + "individuos=" + individuos + ", tamPopulacao=" + tamPopulacao + '}';
     }
 
-    
-  
-   
-    
-    
-    
 }

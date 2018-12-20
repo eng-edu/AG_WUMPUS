@@ -88,7 +88,7 @@ public final class Individuo {
                 //brisa
                 case 4:
                     if (japegouOuro) {
-                       aptidao = aptidao + 1;
+                        aptidao = aptidao + 1;
                     } else {
                         aptidao = aptidao - 10;
                     }
@@ -140,22 +140,20 @@ public final class Individuo {
 
             }
 
-            //VERIFICAR SE O ULTLIMO MOVIMENTO FOI X =0 E Y =0
-            //caso tenha pegado o ouro
+         
             if (japegouOuro) {
-                if (moviemntoY == 0 && movimentoX == 0) {
-                    
-                    if(jachegou){   
-                         aptidao = aptidao - 10000; 
+
+                if (jachegou == false) {
+                    if (moviemntoY == 0 && movimentoX == 0) {
+                        aptidao = aptidao + 100000;
+                        jachegou = true;
                     }else{
-                        aptidao = aptidao + 100000; 
-                       jachegou = true; 
+                       aptidao = aptidao - 100;
                     }
-                    
-                   
+                }else if (jachegou) {
+                    aptidao = aptidao - 10000;
                 }
-                
-                
+
             }
 
         }

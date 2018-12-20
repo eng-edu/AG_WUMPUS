@@ -20,7 +20,7 @@ public class Ambiente {
     public static int matriz[][] = new int[xMax][iMax];
     int matrizMov[][] = new int[xMax][iMax];
     public static int percepcao = 0;
-    
+
     int aptidao = 0;
 
     public Ambiente() {
@@ -41,9 +41,8 @@ public class Ambiente {
 //
 //
         matriz[4][0] = ouro;
-           
 
-        //System.out.println(Util.formataSaidaDaMatriz2(matriz));
+        System.out.println(Util.formataSaidaDaMatriz2(matriz));
 
     }
 
@@ -52,17 +51,16 @@ public class Ambiente {
     }
 
     public static int getPercepcao(int movX, int movY) {
-       
-        try{
-            return  matriz[movX][movY];
-        }catch(Exception e){
-            return  50;//numero não entra na logica
+
+        try {
+            return matriz[movX][movY];
+        } catch (Exception e) {
+            return 50;//numero não entra na logica
         }
-       
+
     }
-    
-    
-    public  void runSolucao(String solucao){
+
+    public void runSolucao(String solucao) {
         avaliarPerformance(iMax, xMax, solucao);
     }
 
@@ -130,9 +128,6 @@ public class Ambiente {
             int percepcao = ambiente.getPercepcao(movimentoX, moviemntoY);
 
             //printa o movimento na matriz aqui....
-            
-            
-            
             //printa as percepções
             if (processAmbiente) {
 
@@ -249,10 +244,10 @@ public class Ambiente {
             //cada volta no laço desconto 10 pontos.
             aptidao = aptidao - 10;
 
-            
             System.out.println("aptidão: " + aptidao);
         }
     }
+
     public boolean verify(int movX, int movY, int iMax, int xMax) {
         boolean result = false;
 
