@@ -1,6 +1,8 @@
 package util;
 
 import java.util.Collections;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import static wumpus2.pkg2.WUMPUS22.ambiente;
 
 public class AG {
@@ -18,8 +20,10 @@ public class AG {
     String solucaoAtual = "";
     int solucaoRepetiu = 0;
 
-    public void run() {
+    public String run() {
 
+       
+        
         //população incial
         populacao = new Populacao(rangeNumGenes, tamPop, iMax, xMax);
         tamPop = populacao.getTamPopulacao();
@@ -49,7 +53,7 @@ public class AG {
             
             solucaoAtual = e0;
             
-            //System.out.println(e0);;
+            System.out.println(e0);;
             if (e0.equals(e1) || e0.equals(e2) || e0.equals(e3)) {
 
                 //removo os tres individuos repetidos
@@ -84,18 +88,17 @@ public class AG {
                 solucaoRepetiu++;
                  System.out.println("Já resolvi! " + solucaoRepetiu);
                  
-                 if(solucaoRepetiu > 10000){
+                 if(solucaoRepetiu > 50000){
                      break;
-                     
+                    
                  }
             }
 
-            System.out.println(populacao);
-
-      
+           // System.out.println(populacao);
 
         }
 
+         return solucaoAtual;
     }
 
 }

@@ -3,6 +3,9 @@ package util;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import static util.AG.iMax;
+import static util.AG.xMax;
+import static util.Ambiente.ag;
 
 public class Util {
 
@@ -209,6 +212,25 @@ public class Util {
         }
         return saida; //retorna a String
     }
+    
+    
+        public static String formataSaidaDaMatriz3(int movx, int movy) {
+
+        int[][] matriz = new int[xMax][iMax];
+        matriz[movx][movy] = ag;
+            
+        String saida = ""; // Cria e inicializa uma String	
+        for (int linha = matriz.length - 1; linha >= 0; linha--) { //for para percorrer as linhas da matriz
+
+            for (int coluna = 0; coluna < matriz[0].length; coluna++) { //percorrer as colunas
+                //guardando na String cada elemento separado por um espaço
+                saida = saida + matriz[linha][coluna] + " ";
+            }
+            saida = saida + "\n"; // Guarda uma quebra de linha na String
+        }
+        return saida; //retorna a String
+    }
+    
 
     public static int numeroAleatorio(int min, int max) {
 
