@@ -14,7 +14,7 @@ public class RunAG {
     int tamPop = 3;
     int tamGer = 100000;
 
-    public void run() {
+    public void run(String solucao) {
 
         //população incial
         populacao = new Populacao(rangeNumGenes, tamPop, iMax, xMax);
@@ -45,8 +45,11 @@ public class RunAG {
 
               
             if (e0.equals(e1) && e0.equals(e2) && e0.equals(e3)) {
-                //System.err.println("\ntodos iguais\n ");
-
+     
+                if(e0.equals(solucao)){
+                   break; 
+                }
+                
                 //removo os tres individuos repetidos
                 populacao.removeUtlimoIndividuo(populacao.getTamPopulacao()-1);
                 populacao.removeUtlimoIndividuo(populacao.getTamPopulacao()-1);
@@ -73,8 +76,6 @@ public class RunAG {
                     return 0;
                 });
                
-              // break;
-
             }
 
         }

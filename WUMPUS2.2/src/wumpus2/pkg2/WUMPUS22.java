@@ -10,7 +10,7 @@ public class WUMPUS22 {
     
     public static void main(String[] args) {
      
-        new RunAG().run();
+        new RunAG().run("NNNNSSSS");
         
       //System.out.println(util.Util.formataSaidaDaMatriz2(ambiente.getMatriz()));
         
