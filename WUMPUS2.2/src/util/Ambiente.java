@@ -63,6 +63,7 @@ public class Ambiente {
     public boolean runSolucao(String genes) {
         boolean result = false;
         boolean japegouOuro = false;
+        boolean movimentoFora = false;
 
         int sizeGene = genes.length();
 
@@ -91,9 +92,13 @@ public class Ambiente {
             if (getPercepcao(movimentoX, moviemntoY) == 6 && japegouOuro == false) {
                 japegouOuro = true;
             }
+            
+            if(getPercepcao(movimentoX, moviemntoY) == 50){
+                movimentoFora = true;
+            }
         }
 
-        if (movimentoX == 0 && moviemntoY == 0 && japegouOuro == true) {
+        if (movimentoX == 0 && moviemntoY == 0 && japegouOuro == true && movimentoFora == false) {
             result = true;
         }
 

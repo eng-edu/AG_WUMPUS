@@ -13,7 +13,8 @@ public class RunAG {
     // Ambiente ambiente = new Ambiente();
     int rangeNumGenes = 100;
     int tamPop = 3;
-    int tamGer = 1000000;
+    int tamGer = 100000;
+    int resultadosAceitos = 0;
 
     public void run() {
 
@@ -71,14 +72,23 @@ public class RunAG {
 
                     return 0;
                 });
-
+ 
             }
-
             
-                 if (ambiente.runSolucao(e0) == true) {
-                break;
-            }
+            
+            
+          //  System.out.println(populacao);
 
+            if(ambiente.runSolucao(e0)){
+                resultadosAceitos ++;
+                System.out.println("Já resolvi!");
+            }
+            
+            if(resultadosAceitos> 10000){
+            //    break;
+            }
+            
+           
             
         }
 
