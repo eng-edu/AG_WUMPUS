@@ -49,8 +49,8 @@ public class AG {
             
             solucaoAtual = e0;
             
-            System.out.println(e0);;
-            if (e0.equals(e1) && e0.equals(e2) || e0.equals(e3)) {
+            //System.out.println(e0);;
+            if (e0.equals(e1) || e0.equals(e2) || e0.equals(e3)) {
 
                 //removo os tres individuos repetidos
                 populacao.removeUtlimoIndividuo(populacao.getTamPopulacao() - 1);
@@ -90,7 +90,7 @@ public class AG {
                  }
             }
 
-         //   System.out.println(populacao);
+            System.out.println(populacao);
 
       
 
