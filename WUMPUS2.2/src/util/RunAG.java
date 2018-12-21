@@ -10,9 +10,9 @@ public class RunAG {
     Populacao populacao = null;
 
     // Ambiente ambiente = new Ambiente();
-    int rangeNumGenes = 1000;
+    int rangeNumGenes = 100;
     int tamPop = 3;
-    int tamGer = 300;
+    int tamGer = 100000;
 
     public void run() {
 
@@ -41,21 +41,18 @@ public class RunAG {
             String e2 = in2.getGenes();
             String e3 = in3.getGenes();
 
-            System.out.println("\n\ne0 : " + e0 + "  aptd: " + in0.getAptidaoMov());;
-            System.out.println("\t e1 : " + e1 + "  aptd: " + in1.getAptidaoMov());
-            System.out.println("\t \t e2 : " + e2 + "  aptd: " + in2.getAptidaoMov());
-            System.out.println("\t \t \t e3 : " + e3 + "  aptd: " + in3.getAptidaoMov());
+            System.out.println("\n\ne0 : " + e0);;
 
-            //    System.out.println(populacao);
+              
             if (e0.equals(e1) && e0.equals(e2) && e0.equals(e3)) {
-                System.out.println("\ntodos iguais\n ");
+                System.err.println("\ntodos iguais\n ");
 
                 //removo os tres individuos repetidos
                 populacao.removeUtlimoIndividuo(populacao.getTamPopulacao()-1);
                 populacao.removeUtlimoIndividuo(populacao.getTamPopulacao()-1);
                 populacao.removeUtlimoIndividuo(populacao.getTamPopulacao()-1);
              
-               // System.out.println(populacao);
+                System.out.println(populacao);
 
                 populacao.addIndividuos(new Individuo(rangeNumGenes, iMax, xMax));
                 populacao.addIndividuos(new Individuo(rangeNumGenes, iMax, xMax));
@@ -76,16 +73,15 @@ public class RunAG {
                     return 0;
                 });
 
-                //System.out.println(populacao);
+                System.out.println(populacao);
 
                 
-               //break;
+              // break;
 
             }
 
         }
 
-        String solucao = populacao.getIndividuos().get(0).getGenes();
 
     }
     

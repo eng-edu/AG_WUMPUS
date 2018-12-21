@@ -70,10 +70,10 @@ public class Geracao {
     }
 
     public void mutarIndividuo() {
-        this.selecionado1 = new Random().nextInt(this.individuosSelecionados.size());
+        this.selecionado1 = Util.numeroAleatorio(0, this.individuosSelecionados.size());
         this.mutado1 = Util.mutarIndividuo(this.novosIndividuos, this.iMax, this.xMax, this.selecionado1);
 
-        this.selecionado2 = new Random().nextInt(this.individuosSelecionados.size());
+        this.selecionado2 = Util.numeroAleatorio(0, this.individuosSelecionados.size());
         this.mutado2 = Util.mutarIndividuo(this.novosIndividuos, this.iMax, this.xMax, this.selecionado2);
 
         //atualizar individuo mutado na populaçao

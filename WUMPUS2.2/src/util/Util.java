@@ -11,13 +11,11 @@ public class Util {
 
         List<Individuo> selecionados = new ArrayList();
 
-        Random r = new Random();
-
         //sorteia dois numeros
-        int radom1 = r.nextInt(individuos.size());
-        int radom2 = r.nextInt(individuos.size());
-        int radom3 = r.nextInt(individuos.size());
-        int radom4 = r.nextInt(individuos.size());
+        int radom1 = Util.numeroAleatorio(0, individuos.size());
+        int radom2 = Util.numeroAleatorio(0, individuos.size());
+        int radom3 = Util.numeroAleatorio(0, individuos.size());
+        int radom4 = Util.numeroAleatorio(0, individuos.size());
 
         selecionados.add(individuos.get(radom1));
         selecionados.add(individuos.get(radom2));
@@ -36,8 +34,8 @@ public class Util {
         int sizeGene1 = individuosSelecionados.get(0).getGenes().length();
 
         //soterio dos valores com os tamanhos dos genes do individuo1
-        int radom1 = r.nextInt(sizeGene1);
-        int radom2 = r.nextInt(sizeGene1);
+        int radom1 = Util.numeroAleatorio(1, sizeGene1);
+        int radom2 = Util.numeroAleatorio(1, sizeGene1);
 
         //tres partes do indivio1
         String p1 = "";
@@ -64,8 +62,8 @@ public class Util {
         int sizeGene2 = individuosSelecionados.get(1).getGenes().length();
 
         //soterio dos valores com os tamanhos dos genes do individuo1
-        int radom3 = r.nextInt(sizeGene2);
-        int radom4 = r.nextInt(sizeGene2);
+        int radom3 = Util.numeroAleatorio(1, sizeGene2);
+        int radom4 = Util.numeroAleatorio(1, sizeGene2);
 
         //tres partes do indivio1
         String p4 = "";
@@ -92,8 +90,8 @@ public class Util {
         int sizeGene3 = individuosSelecionados.get(2).getGenes().length();
 
         //soterio dos valores com os tamanhos dos genes do individuo1
-        int radom5 = r.nextInt(sizeGene3);
-        int radom6 = r.nextInt(sizeGene3);
+        int radom5 = Util.numeroAleatorio(1, sizeGene3);
+        int radom6 = Util.numeroAleatorio(1, sizeGene3);
 
         //tres partes do indivio1
         String p7 = "";
@@ -120,8 +118,8 @@ public class Util {
         int sizeGene4 = individuosSelecionados.get(3).getGenes().length();
 
         //soterio dos valores com os tamanhos dos genes do individuo1
-        int radom7 = r.nextInt(sizeGene4);
-        int radom8 = r.nextInt(sizeGene4);
+        int radom7 = Util.numeroAleatorio(1, sizeGene4);
+        int radom8 = Util.numeroAleatorio(1, sizeGene4);
 
         //tres partes do indivio1
         String p10 = "";
@@ -168,11 +166,11 @@ public class Util {
 
         Individuo in = novosIndividuos.get(escolhido);
 
-        int radom = r.nextInt(opcoes.length());
+        int radom = Util.numeroAleatorio(0, opcoes.length());
 
         char mutacao = opcoes.charAt(radom);
 
-        int radom1 = r.nextInt(in.getGenes().length());
+        int radom1 = Util.numeroAleatorio(0, in.getGenes().length());
 
         StringBuffer sb = new StringBuffer(in.getGenes());
 
@@ -203,13 +201,20 @@ public class Util {
         String saida = ""; // Cria e inicializa uma String	
         for (int linha = matriz.length - 1; linha >= 0; linha--) { //for para percorrer as linhas da matriz
 
-           for (int coluna = 0; coluna < matriz[0].length; coluna++) { //percorrer as colunas
+            for (int coluna = 0; coluna < matriz[0].length; coluna++) { //percorrer as colunas
                 //guardando na String cada elemento separado por um espaço
                 saida = saida + matriz[linha][coluna] + " ";
             }
             saida = saida + "\n"; // Guarda uma quebra de linha na String
         }
         return saida; //retorna a String
+    }
+
+    public static int numeroAleatorio(int min, int max) {
+
+        int randomNum = min + (int) (Math.random() * (max - min));
+
+        return randomNum;
     }
 
 }

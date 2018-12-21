@@ -20,11 +20,9 @@ public final class Individuo {
     //gera um indivíduo aleatório 
     public Individuo(int rangeNumGenes, int iMax, int xMax) {
 
-        Random r = new Random();
-
-        for (int i = 0; i < r.nextInt(rangeNumGenes); i++) {
+        for (int i = 0; i < Util.numeroAleatorio(10, rangeNumGenes); i++) {
             //Ssorteia uma posicao aleatoria dos caracteres definidos
-            this.genes += caracteres.charAt(r.nextInt(caracteres.length()));
+            this.genes += caracteres.charAt(Util.numeroAleatorio(0,caracteres.length()));
         }
 
         avaliarPerformance(iMax, iMax, genes);
