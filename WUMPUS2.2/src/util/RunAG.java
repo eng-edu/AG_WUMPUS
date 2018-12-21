@@ -41,19 +41,19 @@ public class RunAG {
             String e2 = in2.getGenes();
             String e3 = in3.getGenes();
 
-            System.out.println("\n\ne0 : " + e0);;
+            System.out.println(e0);;
 
               
             if (e0.equals(e1) && e0.equals(e2) && e0.equals(e3)) {
-                System.err.println("\ntodos iguais\n ");
+                //System.err.println("\ntodos iguais\n ");
 
                 //removo os tres individuos repetidos
                 populacao.removeUtlimoIndividuo(populacao.getTamPopulacao()-1);
                 populacao.removeUtlimoIndividuo(populacao.getTamPopulacao()-1);
                 populacao.removeUtlimoIndividuo(populacao.getTamPopulacao()-1);
              
-                System.out.println(populacao);
 
+                //add os novos
                 populacao.addIndividuos(new Individuo(rangeNumGenes, iMax, xMax));
                 populacao.addIndividuos(new Individuo(rangeNumGenes, iMax, xMax));
                 populacao.addIndividuos(new Individuo(rangeNumGenes, iMax, xMax));
@@ -72,10 +72,7 @@ public class RunAG {
 
                     return 0;
                 });
-
-                System.out.println(populacao);
-
-                
+               
               // break;
 
             }
