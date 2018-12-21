@@ -10,15 +10,9 @@ public class WUMPUS22 {
     
     public static void main(String[] args) {
      
-        new RunAG().run("NNNNSSSS");
-        
-        System.out.println(util.Util.formataSaidaDaMatriz2(ambiente.getMatriz()));
-        
-       // System.out.println(ambiente.getPercepcao(0, 4));
-        
-        
-      //  ambiente.runSolucao("NNNN");
-          
+        new RunAG().run();
+   
+      
     }
 
  

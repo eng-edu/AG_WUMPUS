@@ -1,6 +1,7 @@
 package util;
 
 import java.util.Collections;
+import static wumpus2.pkg2.WUMPUS22.ambiente;
 
 public class RunAG {
 
@@ -12,9 +13,9 @@ public class RunAG {
     // Ambiente ambiente = new Ambiente();
     int rangeNumGenes = 100;
     int tamPop = 3;
-    int tamGer = 100000;
+    int tamGer = 1000000;
 
-    public void run(String solucao) {
+    public void run() {
 
         //população incial
         populacao = new Populacao(rangeNumGenes, tamPop, iMax, xMax);
@@ -43,18 +44,13 @@ public class RunAG {
 
             System.out.println(e0);;
 
-              
+       
             if (e0.equals(e1) && e0.equals(e2) && e0.equals(e3)) {
-     
-                if(e0.equals(solucao)){
-                   break; 
-                }
-                
+
                 //removo os tres individuos repetidos
-                populacao.removeUtlimoIndividuo(populacao.getTamPopulacao()-1);
-                populacao.removeUtlimoIndividuo(populacao.getTamPopulacao()-1);
-                populacao.removeUtlimoIndividuo(populacao.getTamPopulacao()-1);
-             
+                populacao.removeUtlimoIndividuo(populacao.getTamPopulacao() - 1);
+                populacao.removeUtlimoIndividuo(populacao.getTamPopulacao() - 1);
+                populacao.removeUtlimoIndividuo(populacao.getTamPopulacao() - 1);
 
                 //add os novos
                 populacao.addIndividuos(new Individuo(rangeNumGenes, iMax, xMax));
@@ -75,14 +71,17 @@ public class RunAG {
 
                     return 0;
                 });
-               
+
             }
 
+            
+                 if (ambiente.runSolucao(e0) == true) {
+                break;
+            }
+
+            
         }
 
-
     }
-    
-    
 
 }
