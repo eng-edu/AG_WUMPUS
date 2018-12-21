@@ -1,7 +1,7 @@
 package util;
 
-import static util.RunAG.iMax;
-import static util.RunAG.xMax;
+import static util.AG.iMax;
+import static util.AG.xMax;
 import static wumpus2.pkg2.WUMPUS22.ambiente;
 
 public class Ambiente {

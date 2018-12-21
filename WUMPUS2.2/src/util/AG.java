@@ -3,7 +3,7 @@ package util;
 import java.util.Collections;
 import static wumpus2.pkg2.WUMPUS22.ambiente;
 
-public class RunAG {
+public class AG {
 
     public static String caracteres = "NSLO";
     public static int iMax = 5;
@@ -13,8 +13,10 @@ public class RunAG {
     // Ambiente ambiente = new Ambiente();
     int rangeNumGenes = 100;
     int tamPop = 3;
-    int tamGer = 100000;
-    int resultadosAceitos = 0;
+    int tamGer = 10000000;
+    String solucaoAnterior = "";
+    String solucaoAtual = "";
+    int solucaoRepetiu = 0;
 
     public void run() {
 
@@ -25,10 +27,12 @@ public class RunAG {
         System.out.println("\nPopulação inicial: " + populacao);
         for (int i = 0; i <= tamGer; i++) {
 
+            solucaoAnterior = solucaoAtual;
+   
             Geracao g = new Geracao(populacao, rangeNumGenes, iMax, xMax);
             g.run();
 
-            System.out.println("\nGeracção: " + i);
+            System.out.println("\nGeração: " + i);
 
             tamPop = g.getPopulacao().getTamPopulacao();
             populacao = g.getPopulacao();
@@ -42,11 +46,11 @@ public class RunAG {
             String e1 = in1.getGenes();
             String e2 = in2.getGenes();
             String e3 = in3.getGenes();
-
+            
+            solucaoAtual = e0;
+            
             System.out.println(e0);;
-
-       
-            if (e0.equals(e1) && e0.equals(e2) && e0.equals(e3)) {
+            if (e0.equals(e1) && e0.equals(e2) || e0.equals(e3)) {
 
                 //removo os tres individuos repetidos
                 populacao.removeUtlimoIndividuo(populacao.getTamPopulacao() - 1);
@@ -72,24 +76,24 @@ public class RunAG {
 
                     return 0;
                 });
- 
-            }
-            
-            
-            
-          //  System.out.println(populacao);
 
-            if(ambiente.runSolucao(e0)){
-                resultadosAceitos ++;
-                System.out.println("Já resolvi!");
             }
             
-            if(resultadosAceitos> 10000){
-            //    break;
+            if(solucaoAnterior.equals(solucaoAtual) && ambiente.runSolucao(e0)){
+               
+                solucaoRepetiu++;
+                 System.out.println("Já resolvi! " + solucaoRepetiu);
+                 
+                 if(solucaoRepetiu > 10000){
+                     break;
+                     
+                 }
             }
-            
-           
-            
+
+         //   System.out.println(populacao);
+
+      
+
         }
 
     }

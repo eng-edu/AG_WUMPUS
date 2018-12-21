@@ -2,7 +2,7 @@ package util;
 
 import com.sun.xml.internal.ws.encoding.soap.SOAP12Constants;
 import java.util.Random;
-import static util.RunAG.caracteres;
+import static util.AG.caracteres;
 import static wumpus2.pkg2.WUMPUS22.ambiente;
 
 public final class Individuo {
