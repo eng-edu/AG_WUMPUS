@@ -53,10 +53,10 @@ public final class Individuo {
                     movimentoX--;
                     break;
                 case 'L':
-                    moviemntoY--;
+                    moviemntoY++;
                     break;
                 case 'O':
-                    moviemntoY++;
+                    moviemntoY--;
                     break;
             }
 
@@ -67,7 +67,7 @@ public final class Individuo {
                 //nada
                 case 0:
                     if (japegouOuro) {
-                        aptidao = aptidao + 1;
+                        aptidao = aptidao + 10;
                     } else {
                         aptidao = aptidao - 10;
                     }
@@ -76,7 +76,7 @@ public final class Individuo {
                 //fedor    
                 case 2:
                     if (japegouOuro) {
-                        aptidao = aptidao + 1;
+                        aptidao = aptidao + 10;
                     } else {
                         aptidao = aptidao - 10;
                     }
@@ -86,7 +86,7 @@ public final class Individuo {
                 //brisa
                 case 4:
                     if (japegouOuro) {
-                        aptidao = aptidao + 1;
+                        aptidao = aptidao + 10;
                     } else {
                         aptidao = aptidao - 10;
                     }
@@ -153,6 +153,7 @@ public final class Individuo {
                 }
 
             }
+            
 
         }
 
