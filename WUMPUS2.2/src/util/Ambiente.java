@@ -38,11 +38,7 @@ public class Ambiente {
         matriz[0][4] = foco;
         matriz[1][4] = brisa;
         matriz[0][3] = brisa;
-//        matriz[6][6] = brisa;
-//        matriz[6][4] = brisa;
-//
-//
-//
+
         matriz[4][4] = ouro;
 
     }
